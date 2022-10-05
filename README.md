@@ -46,5 +46,5 @@ oh and you can totally put other characters in a program, the executer ignores t
 
 for those who think my C is bad:
 ```diff
-i don't rightly care
+- i don't rightly care
 ```
