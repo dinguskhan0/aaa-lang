@@ -24,7 +24,7 @@ aaa-lang only accepts A, ? and ! as characters, and has 9 commands.
 each command is two characters long, however BEWARE OF THIS FACT: i made this to be terrible, so... the program counter only goes up by one after each command! hehehehehe  
 this means that `a?!` is two commands: `a?` and `?!`. keep this in mind when writing code.  
   
-some things to note:
+some things to note:  
 the language allows manipulation of two main things `memory index` and `value at memory index`. this is all you get in the way of memory manipulation  
   
 there are also three program flow thingies that jump around based on whether the `value at memory index` is `0` or `not 0`  
