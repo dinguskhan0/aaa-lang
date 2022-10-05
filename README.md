@@ -14,7 +14,7 @@ gcc aaa.c -o aaa
 ```
 wow! so complex  
   
-you can run a program file with this using 
+you can run a program file (literally just a file with text in it) with ./aaa using 
 ```console
 ./aaa <path-to-file>
 ```
@@ -41,4 +41,10 @@ a?: subtract one from pointer index
 a!: if pointer value is 0, jump to after next ?!
 ?!: if pointer value is not 0, jump to after previous a!
 !!: if pointer value is not 0, jump to after next ?!
+```
+oh and you can totally put other characters in a program, the executer ignores them entirely
+
+for those who think my C is bad:
+```diff
+i don't rightly care
 ```
