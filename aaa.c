@@ -1,5 +1,8 @@
+//aaa lang executer v1
+//made with love by the infamous dinguskhan0
 #include <stdio.h>
 
+//change this if you somehow managed to hit the memory limit and need more
 #define MEMORY_SIZE 32767
 
 int main(int argc, char* argv[]) {
