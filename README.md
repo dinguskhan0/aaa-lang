@@ -75,3 +75,10 @@ for those who think my C is bad:
 # discovered programs
 #### some kind of weird input loop
 ```!A!A??!``` asks for input and then *asks for input again and again and again and again and again...*
+
+# will i ever update this?
+probably... no
+
+i don't see a reason nor do i care that much
+
+if there's an error then *maybe*
