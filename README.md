@@ -1,4 +1,5 @@
 # aaa-lang
+THERE IS A PROBLEM THAT MAKES THIS NOT TURING COMPLETE PLEASE HOLD
 turing complete language that only accepts three characters
 
 you read that right.  
