@@ -6,6 +6,8 @@
 #define MEMORY_SIZE 32767
 
 int main(int argc, char* argv[]) {
+    int DEBUG = argc > 2 && argv[2][0] == 'd';
+    if (DEBUG) printf("[DEBUG MODE]\n");
     //file reading
     if (argc < 2) {
         printf("a?! runtime requires one argument specifying path\n");
@@ -35,7 +37,6 @@ int main(int argc, char* argv[]) {
 
     char memory[MEMORY_SIZE] = {0};
     int mindex;
-    int flag = 0; //used to skip commands
     //flag 1 = skip until reach ?!
     //flag -1 = go back until reach a!
 
@@ -89,27 +90,8 @@ int main(int argc, char* argv[]) {
             break;
         }
 
-        // printf("code %d\n",code);
-
-        // flag = 0;
-
         //execution
-        if (flag != 0) {
-            //flag instructions
-            if (flag == -1) {
-                i -= 2;
-                if (code == 31) {
-                    flag = 0;
-                }
-                continue;
-            };
-            if (flag == 1) {
-                if (code == 32) {
-                    flag = 0;
-                }
-            }
-            continue;
-        }
+        if (DEBUG) printf("executing '%c%c'\n",data[i-1], data[i]);
         switch (code)
         {
         case 11: //AA
@@ -117,32 +99,80 @@ int main(int argc, char* argv[]) {
             break;
         case 12: //?A
             memory[mindex]--;
+            if (DEBUG) printf("   mem[%d] = %d\n",mindex,memory[mindex]);
             break;
         case 13: //!A
             memory[mindex]++;
+            if (DEBUG) printf("   mem[%d] = %d\n",mindex,memory[mindex]);
             break;
         case 21: //A?
             if (mindex > 0) mindex--;
+            if (DEBUG) printf("   mem[%d] = %d\n",mindex,memory[mindex]);
             break;
         case 22: //??
             memory[mindex] = getchar();
+            if (DEBUG) printf("   mem[%d] = %d\n",mindex,memory[mindex]);
             break;
         case 23: //!?
             if (mindex < MEMORY_SIZE) mindex++;
+            if (DEBUG) printf("   mem[%d] = %d\n",mindex,memory[mindex]);
             break;
         case 31: //A!
-            if (memory[mindex] == 0) flag = 1;
+            if (memory[mindex] == 0) {
+                int level = 1;
+                while (1)
+                {
+                    i++;
+                    if (i > filesize) { 
+                        printf(" ERROR: attempt to skip past file bounds");
+                        return -1;
+                    }
+                    if (data[i-1] == 'A' && data[i] == '!') {
+                        level++;
+                    }
+                    if (data[i-1] == '?' && data[i] == '!') {
+                        level--;
+                        if (!level) break;
+                    }
+                    if (DEBUG) printf("   skipping [f] '%c%c'\n",data[i-1], data[i]);
+                }
+                i--;
+                if (DEBUG) printf(" END SKIP\n");
+            } else if (DEBUG) printf("   mem[%d] != 0\n",mindex);
+            
             break;
         case 32: //?!
-            if (memory[mindex] != 0) flag = -1;
+            if (memory[mindex] != 0) {
+                int level = 1;
+                while (1)
+                {
+                    i--;
+                    if (i > filesize) { 
+                        printf(" ERROR: attempt to skip past file bounds");
+                        return -1;
+                    }
+                    if (data[i-2] == '?' && data[i-1] == '!') {
+                        level++;
+                    }
+                    if (data[i-2] == 'A' && data[i-1] == '!') {
+                        level--;
+                        if (!level) {
+                            i++;
+                            break;
+                        };
+                    }
+                    if (DEBUG) printf("   skipping [r] '%c%c'\n",data[i-1], data[i]);
+                }
+                i -= 2;
+                if (DEBUG) printf(" END SKIP\n");
+            } else if (DEBUG) printf("   mem[%d] == 0\n",mindex);
             break;
         case 33: //!!
-            if (memory[mindex] != 0) flag = 1;
+            if (memory[mindex] != 0) break;
             break;
         default:
             break;
         }
-        if (flag == -1) i -= 1;
         if (i >= filesize) {
             printf("ERROR: program counter out of bounds [max %d, attempted %d]\n", filesize, i);
             return -1;
