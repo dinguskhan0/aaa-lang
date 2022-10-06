@@ -37,8 +37,6 @@ int main(int argc, char* argv[]) {
 
     char memory[MEMORY_SIZE] = {0};
     int mindex;
-    //flag 1 = skip until reach ?!
-    //flag -1 = go back until reach a!
 
     //interpreter
     for (int i = 1; i < filesize; i++) {
