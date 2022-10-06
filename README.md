@@ -1,5 +1,4 @@
 # aaa-lang
-##### unfortunately there is a problem i detected which causes severe issues with white space. i will update this soon!
 turing complete language that only accepts three characters
 
 you read that right.  
@@ -19,11 +18,28 @@ you can run a program file (literally just a file with text in it) with ./aaa us
 ```console
 ./aaa <path-to-file>
 ```
+if you want, you can get extra-cool debugging info by appending a d to the end of your command like so:
+```console
+./aaa <path-to-file> d
+```
+you'll get cool output that looks something like this
+```console
+[DEBUG MODE]
+executing '!A'
+   mem[0] = 1
+executing 'A!'
+   mem[0] != 0
+executing '!A'
+   mem[0] = 2
+executing 'A?'
+   mem[0] = 2
+executing '??'
+```
 
 # usage
 aaa-lang only accepts A, ? and ! as characters, and has 9 commands.
 each command is two characters long, however BEWARE OF THIS FACT: i made this to be terrible, so... the program counter only goes up by one after each command! hehehehehe  
-this means that `a?!` is two commands: `a?` and `?!`. keep this in mind when writing code.  
+this means that `A?!` is two commands: `A?` and `?!`. keep this in mind when writing code.  
   
 some things to note:  
 the language allows manipulation of two main things `memory index` and `value at memory index`. this is all you get in the way of memory manipulation  
@@ -40,12 +56,12 @@ all very nicely grouped
 AA: output value at memory index
 
 *?: memory index manipulation
-a?: subtract one from memory index
+A?: subtract one from memory index
 !?: add one to memory index
 ??: get input and put it at memory index (not entirely sure but i think this puts additional characters after the first one)
 
 *!: program counter jumping
-a!: if value at memory index is 0, jump to after next ?!
+A!: if value at memory index is 0, jump to after next ?!
 ?!: if value at memory index is not 0, jump to after previous a!
 !!: if value at memory index is not 0, jump to after next ?!
 ```
@@ -55,3 +71,7 @@ for those who think my C is bad:
 ```diff
 - i don't rightly care
 ```
+
+# discovered programs
+#### some kind of weird input loop
+```!A!A??!``` asks for input and then *asks for input again and again and again and again and again...*
