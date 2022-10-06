@@ -1,5 +1,5 @@
 # aaa-lang
-THERE IS A PROBLEM THAT MAKES THIS NOT TURING COMPLETE PLEASE HOLD
+##### unfortunately there is a problem i detected which causes severe issues with white space. i will update this soon!
 turing complete language that only accepts three characters
 
 you read that right.  
