@@ -63,7 +63,7 @@ A?: subtract one from memory index
 *!: program counter jumping
 A!: if value at memory index is 0, jump to after next ?!
 ?!: if value at memory index is not 0, jump to after previous a!
-!!: if value at memory index is not 0, jump to after next ?!
+{broken and does nothing} !!: if value at memory index is not 0, jump to after next ?!
 ```
 oh and you can totally put other characters in a program, the executer ignores them entirely
 
