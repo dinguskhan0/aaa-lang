@@ -61,9 +61,9 @@ A?: subtract one from memory index
 ??: get input and put it at memory index (not entirely sure but i think this puts additional characters after the first one)
 
 *!: program counter jumping
-A!: if value at memory index is 0, jump to after next ?!
-?!: if value at memory index is not 0, jump to after previous a!
-{broken and does nothing} !!: if value at memory index is not 0, jump to after next ?!
+A!: if value at memory index is 0, jump to after matching ?! (this way you can have A! and ?! in between)
+?!: if value at memory index is not 0, jump to after matching A!
+!!: currently nothing
 ```
 oh and you can totally put other characters in a program, the executer ignores them entirely
 
