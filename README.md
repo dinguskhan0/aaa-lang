@@ -63,7 +63,7 @@ A?: subtract one from memory index
 *!: program counter jumping
 A!: if value at memory index is 0, jump to after matching ?! (this way you can have A! and ?! in between)
 ?!: if value at memory index is not 0, jump to after matching A!
-!!: currently nothing
+!!: jump to value at memmory index (can raise errors when not in range 0 > value > filesize limit)
 ```
 oh and you can totally put other characters in a program, the executer ignores them entirely
 
@@ -72,7 +72,7 @@ for those who think my C is bad:
 - i don't rightly care
 ```
 
-# discovered programs
+# some programs written in AAA
 #### some kind of weird input loop
 ```!A!A??!``` asks for input and then *asks for input again and again and again and again and again...*
 
