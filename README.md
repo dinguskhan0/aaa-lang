@@ -84,3 +84,6 @@ probably... no
 i don't see a reason nor do i care that much
 
 if there's an error then *maybe*
+
+also note that sometimes the executor **doesn't** ignore other characters (typically you will notice large spamming of a certain character)  
+i don't really know *why* that happens (cry about it), only that it does. if it happens to you, remove whitespace until it doesn't happen anymore :)
