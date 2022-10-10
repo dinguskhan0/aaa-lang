@@ -63,7 +63,7 @@ A?: subtract one from memory index
 *!: program counter jumping
 A!: if value at memory index is 0, jump to after matching ?! (this way you can have A! and ?! in between)
 ?!: if value at memory index is not 0, jump to after matching A!
-!!: jump to value at memmory index (can raise errors when not in range 0 > value > filesize limit)
+!!: if value at memory index is greater than 0, jump to value at memmory index (don't go too far ¯\_( ͡° ͜ʖ ͡°)_/¯)
 ```
 oh and you can totally put other characters in a program, the executer ignores them entirely
 
