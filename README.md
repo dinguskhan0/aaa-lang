@@ -75,6 +75,8 @@ for those who think my C is bad:
 # some programs written in AAA
 #### some kind of weird input loop
 ```!A!A??!``` asks for input and then *asks for input again and again and again and again and again...*
+#### infinite loop
+```!A!!``` run with debug to see why this works
 
 # will i ever update this?
 probably... no
