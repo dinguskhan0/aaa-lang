@@ -145,7 +145,7 @@ int main(int argc, char* argv[]) {
                 while (1)
                 {
                     i--;
-                    if (i > filesize) { 
+                    if (i < 3) { 
                         printf(" ERROR: attempt to skip past file bounds");
                         return -1;
                     }
@@ -166,7 +166,10 @@ int main(int argc, char* argv[]) {
             } else if (DEBUG) printf("   mem[%d] == 0\n",mindex);
             break;
         case 33: //!!
-            if (memory[mindex] != 0) break;
+            if (memory[mindex] > 0) {
+                i = memory[mindex];
+                if (DEBUG) printf("skipping to %d\n", memory[mindex]);
+            } else if (DEBUG) printf("did not skip to %d\n", memory[mindex]);
             break;
         default:
             break;
