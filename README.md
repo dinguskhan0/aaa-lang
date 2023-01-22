@@ -1,5 +1,5 @@
 # a?!-lang
-turing complete language that only accepts three characters
+turing complete (i think) language that only accepts three characters
 
 you read that right.  
 
